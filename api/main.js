@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("./database/index");
 const router = require("./router");
+const cors = require('cors');
+const fileUpload = require('express-fileupload');
 
 
 const app = express();
@@ -11,6 +13,13 @@ app.use(express.urlencoded({ extended: true }))
 
 // parse application/json
 app.use(express.json())
+
+app.use(fileUpload({
+  createParentPath: true
+}));
+
+//add other middleware
+app.use(cors());
 
 app.use("/api", router);
 
