@@ -7,7 +7,7 @@ const schema = mongoose.Schema(
     wind_speed: { type: "number", required: true },
     field: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Field",
+      ref: "fields",
     },
   },
   { timestamps: true }

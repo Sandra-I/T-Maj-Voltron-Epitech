@@ -39,7 +39,7 @@ router.get("/lasted", async (req, res) => {
       {},
       {},
       { sort: { created_at: -1 } }
-    );
+    ).populate('image');
 
     if (!image_process) return res.status(400).json("not image process found");
 

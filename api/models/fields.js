@@ -12,7 +12,7 @@ const schema = mongoose.Schema(
     altitude: { type: "number", required: true },
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "users",
     },
   },
   { timestamps: true }
