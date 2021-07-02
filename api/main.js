@@ -5,6 +5,8 @@ const router = require("./router");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 
+const PORT = process.env.PORT || 5000;
+
 const app = express();
 
 // parse application/x-www-form-urlencoded
@@ -26,6 +28,6 @@ app.use(cors());
 
 app.use("/api", router);
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
   console.log("Server has started!");
 });

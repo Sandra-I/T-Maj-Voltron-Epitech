@@ -13,6 +13,12 @@ router.post("/register", async (req, res) => {
     return res.status(400).json("missing parameters");
   }
 
+  const user = await Users.findOne({ login: login });
+
+  if (user) {
+    return res.status(400).json("login already exist !");
+  }
+
   try {
     await Users.create({
       login: login,
