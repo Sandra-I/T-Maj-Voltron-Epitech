@@ -13,4 +13,4 @@ const schema = mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("fields", schema);
+module.exports = mongoose.model("report_datas", schema);
