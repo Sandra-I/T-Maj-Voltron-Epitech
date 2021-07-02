@@ -40,7 +40,7 @@ router.get("/lasted", async (req, res) => {
     const report_data = await Report_datas.findOne(
       {},
       {},
-      { sort: { created_at: -1 } }
+      { sort: { createdAt: -1 } }
     ).populate("field");
 
     if (!report_data) return res.status(400).json("not report data found");
