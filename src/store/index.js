@@ -3,8 +3,8 @@ import { createStore } from 'vuex'
 const axios = require('axios');
 
 const instance = axios.create({
-  baseURL: 'https://www.wawasensei.dev/api/demo-auth/'
-});
+  baseURL: 'http://api-voltron.herokuapp.com/api/'
+})
 
 let user = localStorage.getItem('user');
 if (!user) {
@@ -30,18 +30,18 @@ const store = createStore({
     status: '',
     user: user,
     userInfos: {
-      nom:'',
-      prenom: '',
-      email: '',
-      photo: '',
+      lastname:'',
+      firstname: '',
+      email: ''
     },
   },
   mutations: {
     setStatus: function (state, status) {
       state.status = status;
     },
+    // TO REVOIR
     logUser: function (state, user) {
-      instance.defaults.headers.common['Authorization'] = user.token;
+      demoAuth.defaults.headers.common['Authorization'] = user.token;
       localStorage.setItem('user', JSON.stringify(user));
       state.user = user;
     },
@@ -60,7 +60,11 @@ const store = createStore({
     login: ({commit}, userInfos) => {
       commit('setStatus', 'loading');
       return new Promise((resolve, reject) => {
-        instance.post('/login', userInfos)
+        const userBody = {
+          login: userInfos.email,
+          password: userInfos.password
+        };
+        instance.post('/login', userBody)
         .then(function (response) {
           commit('setStatus', '');
           commit('logUser', response.data);
@@ -76,7 +80,13 @@ const store = createStore({
       commit('setStatus', 'loading');
       return new Promise((resolve, reject) => {
         commit;
-        instance.post('/createAccount', userInfos)
+        const userBody = {
+          firstname: userInfos.firstname,
+          lastname: userInfos.lastname,
+          login: userInfos.email,
+          password: userInfos.password
+        }
+        instance.post('/register', userBody)
         .then(function (response) {
           commit('setStatus', 'created');
           resolve(response);
