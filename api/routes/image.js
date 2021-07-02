@@ -51,7 +51,7 @@ router.get("/", async (req, res) => {
 
 router.get("/lasted", async (req, res) => {
   try {
-    const image = await Images.findOne({}, {}, { sort: { created_at: -1 } });
+    const image = await Images.findOne({}, {}, { sort: { createdAt: -1 } });
 
     if (!image) return res.status(400).json("not image found");
 
