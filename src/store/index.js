@@ -41,7 +41,7 @@ const store = createStore({
     },
     // TO REVOIR
     logUser: function (state, user) {
-      demoAuth.defaults.headers.common['Authorization'] = user.token;
+      instance.defaults.headers.common['Authorization'] = user.token;
       localStorage.setItem('user', JSON.stringify(user));
       state.user = user;
     },
