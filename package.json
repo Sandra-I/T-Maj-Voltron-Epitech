@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "chokidar": "^3.5.2",
     "core-js": "^3.6.5",
     "es6-promise": "^4.2.8",
     "vue": "^3.0.0",
