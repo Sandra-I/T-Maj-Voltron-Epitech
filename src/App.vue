@@ -14,6 +14,7 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap');
 
+/*
 * {
   font-family: 'Poppins', sans-serif;
   margin:0;
@@ -33,6 +34,7 @@ body {
   min-height: 100vh;
   padding:32px;
 }
+*/
 
 img {
   max-width: 100%;
