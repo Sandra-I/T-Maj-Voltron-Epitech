@@ -5,7 +5,7 @@ const schema = mongoose.Schema(
     status: { type: "number", required: true },
     image: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Image'
+      ref: "Image",
     },
   },
   { timestamps: true }

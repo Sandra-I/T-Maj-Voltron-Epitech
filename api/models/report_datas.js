@@ -2,12 +2,12 @@ const mongoose = require("../database/index");
 
 const schema = mongoose.Schema(
   {
-    temperature: {type: "number", required: true},
-    humidity: {type: "number", required: true},
-    wind_speed: {type: "number", required: true},
+    temperature: { type: "number", required: true },
+    humidity: { type: "number", required: true },
+    wind_speed: { type: "number", required: true },
     field: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Field'
+      ref: "Field",
     },
   },
   { timestamps: true }

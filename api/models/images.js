@@ -6,7 +6,7 @@ const schema = mongoose.Schema(
     name: { type: "string", required: true },
     field: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Field'
+      ref: "Field",
     },
   },
   { timestamps: true }
