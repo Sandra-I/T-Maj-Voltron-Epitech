@@ -11,7 +11,7 @@
           <router-link class="routerLink" to="/allFields"> Tous les champs </router-link>
         </b-nav-item>
         <b-nav-item>
-          <router-link class="routerLink" to="/myFields"> Mon champ </router-link>
+          <router-link class="routerLink" to="/myField"> Mes champs </router-link>
         </b-nav-item>
         <b-nav-item>
           <router-link class="routerLink" to="/myAccount"> Mon compte </router-link>
