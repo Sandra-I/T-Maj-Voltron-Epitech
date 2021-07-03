@@ -19,14 +19,14 @@ router.post("/register", async (req, res) => {
   }
 
   try {
-    await Users.create({
+    const userCreate = await Users.create({
       login: login,
       password: password,
       firstname: firstname,
       lastname: lastname,
     });
 
-    return res.status(201).json("Utilisateur crée");
+    return res.status(201).json(userCreate);
   } catch ($e) {
     console.log($e);
     res.status(400).json("an error has occurred");
