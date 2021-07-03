@@ -33,6 +33,7 @@ export default {
       axios.get(`${baseURL}/images_process/lasted`)
       .then(response => {
         if (this.lastImageIdProcess !== response.data.image._id) {
+          console.log('nouvelles images')
           this.isItSick(response.data.status);
           this.base64 = response.data.image.base_64;
           this.lastImageIdProcess = response.data.image._id;
@@ -64,9 +65,16 @@ export default {
       }, (error) => {
         console.log('FAILED...', error);
       });
+    },
+    setIntervalGetLastImageProcess () {
+      // 300000 millisecondes = 5 minutes
+      setInterval (this.getLastImageProcess, 300000);
     }
   },
   mounted () {
+    this.setIntervalGetLastImageProcess();
+  },
+  created () {
     this.getLastImageProcess();
   }
 }
