@@ -36,7 +36,6 @@
             async allfields (){
                 const response = await axios.get(`${baseURL}/fields`);
                 this.gridData = response.data;
-                console.log(this.gridData);
             }
         },
         mounted () {
@@ -45,8 +44,9 @@
     }
 </script>
 
-<style >
+<style scoped>
 .container{
-    margin:60px;
+  margin-top: 60px;
 }
+
 </style>

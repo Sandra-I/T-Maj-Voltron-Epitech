@@ -24,6 +24,8 @@
 </template>
 
 <script>
+localStorage.setItem('isLogged', false);
+
 export default {
   name: 'App'
 }

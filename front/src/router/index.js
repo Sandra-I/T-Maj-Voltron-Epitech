@@ -1,11 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import AllFields from '../views/AllFields.vue'
-import Home from '../views/Home.vue'
 import MyAccount from '../views/MyAccount.vue'
 import MyField from '../views/MyField.vue'
-import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
+import Authentification from '../views/Authentification.vue'
 
 
 Vue.use(Router)
@@ -16,7 +14,7 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Authentification
     },
     {
       path: '/allFields',
@@ -32,18 +30,6 @@ export default new Router({
       path: '/myField',
       name: 'MyField',
       component: MyField
-    },
-    
-    {
-      path: '/login',
-      name: 'Login',
-      component: Login
-    },
-    
-    {
-      path: '/register',
-      name: 'Register',
-      component: Register
-    },
+    }
   ]
 })
