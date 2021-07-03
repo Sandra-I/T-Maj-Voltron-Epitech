@@ -2,7 +2,9 @@
   <div class="card">
     <h1 class="card__title">Santé des vignes</h1>
     <p class="card__subtitle">Malade ou pas malade ?</p>
-    <img v-if="isSick" :src="'data:image/jpeg;base64,'+ base64"/>
+    <div class="card__subtitle">
+      <img class="img" v-if="isSick" :src="'data:image/jpeg;base64,'+ base64"/>
+    </div>
     <div class="card__subtitle">
       <h3 v-if="isSick" class="colorRed">
         Maladie potentielle repérée sur les vignes !

@@ -35,13 +35,13 @@ export default {
   }
 
   img {
-    max-width: 100%;
+    width: 350px;
     border-radius: 8px;
   }
 
   .card {
     max-width: 100%;
-    width: 540px;
+    width: 740px;
     background:white;
     border-radius: 16px;
     padding:32px;
@@ -56,6 +56,7 @@ export default {
     text-align: center;
     color:#666;
     font-weight: 500;
+    padding-bottom: 10px;
   }
 
   .button {
