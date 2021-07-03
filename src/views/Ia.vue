@@ -4,18 +4,19 @@
     <p class="card__subtitle">Malade ou pas malade ?</p>
     <img v-if="isSick" :src="'data:image/jpeg;base64,'+ base64"/>
     <div class="card__subtitle">
-      <p v-if="isSick">
+      <h3 v-if="isSick" class="colorRed">
         Maladie potentielle repérée sur les vignes !
-      </p>
-      <p v-else>
+      </h3>
+      <h3 v-else>
         Pas de maladie repérée sur les vignes !
-      </p>
+      </h3>
     </div>
   </div>
 </template>
 
 <script>
-const axios = require('axios');
+import axios from 'axios';
+import emailjs from 'emailjs-com';
 
 export default {
   name: 'Ia',
@@ -27,12 +28,11 @@ export default {
     }
   },
   methods: {
-    test () {
+    getLastImageProcess () {
       const baseURL = 'http://api-voltron.herokuapp.com/api/';
       axios.get(`${baseURL}/images_process/lasted`)
       .then(response => {
         if (this.lastImageIdProcess !== response.data.image._id) {
-          console.log('faire quelque chose')
           this.isItSick(response.data.status);
           this.base64 = response.data.image.base_64;
           this.lastImageIdProcess = response.data.image._id;
@@ -46,16 +46,28 @@ export default {
     },
     isItSick (status) {
       if (status < 0.5) {
-        console.log('status < 0.5 pas malade');
         return this.isSick = false;
       } else {
-        console.log('status > 0.5 malade');
+        this.sendEmailAlert();
         return this.isSick = true;
       }
+    },
+    sendEmailAlert () {
+      var templateParams = {
+        to_email: 'sandra.ibrahim@hotmail.fr',
+        to_name: 'James'
+      };
+      emailjs.init("user_MfUUTFhCzCsBRtj45OCUH");
+      emailjs.send('service_mbfftpo', 'template_alerte', templateParams)
+      .then((result) => {
+        console.log('SUCCESS!', result.status, result.text);
+      }, (error) => {
+        console.log('FAILED...', error);
+      });
     }
   },
   mounted () {
-    this.test();
+    this.getLastImageProcess();
   }
 }
 </script>
