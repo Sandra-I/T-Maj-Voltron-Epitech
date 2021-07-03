@@ -5,6 +5,7 @@ const Report_datas = require("../models/report_datas");
 const router = express.Router();
 const Users = require("../models/users");
 
+// MODIFY from Lyne
 router.post("/register", async (req, res) => {
   const { login, password, firstname, lastname } = req.body;
 

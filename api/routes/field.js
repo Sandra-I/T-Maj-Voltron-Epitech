@@ -96,6 +96,28 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// ADD from Lyne
+router.get("/user/:id", async (req, res) => {
+  const id = req.params.id;
+
+  if (!isValidObjectId(id)) {
+    return res.status(400).json("id is not valid");
+  }
+
+  try {
+    const field = await Fields.find({ user: id });
+
+    if (!field) {
+      return res.status(400).json("user field not found");
+    }
+
+    return res.status(200).json(field);
+  } catch ($e) {
+    console.log($e);
+    res.status(400).json("an error has occurred");
+  }
+})
+
 router.put("/:id", async (req, res) => {
   const id = req.params.id;
   const newField = req.body;
