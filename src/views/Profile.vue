@@ -16,13 +16,13 @@
 import { mapState } from 'vuex'
 export default {
   name: 'Profile',
-  mounted: function () {
+  mounted () {
     console.log(this.$store.state.user);
     if (this.$store.state.user.userId == -1) {
       this.$router.push('/');
       return ;
     }
-    this.$store.dispatch('getUserInfos');
+    // this.$store.dispatch('getUserInfos');
   },
   computed: {
     ...mapState({
@@ -30,7 +30,7 @@ export default {
     })
   },
   methods: {
-    logout: function () {
+    logout () {
       this.$store.commit('logout');
       this.$router.push('/');
     }

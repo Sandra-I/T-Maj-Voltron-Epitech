@@ -39,7 +39,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'Login',
-  data: function () {
+  data () {
     return {
       mode: 'login',
       email: '',
@@ -48,14 +48,14 @@ export default {
       password: '',
     }
   },
-  mounted: function () {
+  mounted () {
     if (this.$store.state.user.userId != -1) {
       this.$router.push('/profile');
       return ;
     }
   },
   computed: {
-    validatedFields: function () {
+    validatedFields () {
       if (this.mode == 'create') {
         if (this.email != "" && this.firstname != "" && this.lastname != "" && this.password != "") {
           return true;
@@ -73,13 +73,13 @@ export default {
     ...mapState(['status'])
   },
   methods: {
-    switchToCreateAccount: function () {
+    switchToCreateAccount () {
       this.mode = 'create';
     },
-    switchToLogin: function () {
+    switchToLogin () {
       this.mode = 'login';
     },
-    login: function () {
+    login () {
       const self = this;
       this.$store.dispatch('login', {
         email: this.email,
@@ -90,7 +90,7 @@ export default {
         console.log(error);
       })
     },
-    createAccount: function () {
+    createAccount () {
       const self = this;
       this.$store.dispatch('createAccount', {
         email: this.email,
