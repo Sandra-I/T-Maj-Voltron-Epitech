@@ -85,7 +85,7 @@ export default {
         email: this.email,
         password: this.password,
       }).then(function () {
-        self.$router.push('/profile');
+        self.$router.push('/ia');
       }, function (error) {
         console.log(error);
       })
@@ -96,7 +96,7 @@ export default {
         email: this.email,
         lastname: this.lastname,
         firstname: this.firstname,
-        password: this.password,
+        password: this.password
       }).then(function () {
         self.login();
       }, function (error) {

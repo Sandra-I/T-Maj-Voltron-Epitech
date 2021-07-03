@@ -2,7 +2,7 @@
   <div class="card">
     <h1 class="card__title">Espace Perso</h1>
     <p class="card__subtitle">Voilà donc qui je suis...</p>
-    <p>{{user.prenom}} {{user.nom}} {{user.email}}</p>
+    <p>{{user.firstname}} {{user.lastname}} {{user.email}} {{user.id}}</p>
     <img :src="user.photo"/>
     <div class="form-row">
       <button @click="logout()" class="button">
@@ -22,7 +22,7 @@ export default {
       this.$router.push('/');
       return ;
     }
-    // this.$store.dispatch('getUserInfos');
+    this.$store.dispatch('getUserInfos');
   },
   computed: {
     ...mapState({
@@ -32,7 +32,7 @@ export default {
   methods: {
     logout () {
       this.$store.commit('logout');
-      this.$router.push('/');
+      this.$router.push('/profile');
     }
   }
 }
