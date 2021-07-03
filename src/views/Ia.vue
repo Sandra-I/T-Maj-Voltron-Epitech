@@ -1,6 +1,16 @@
 <template>
-  <div class="hello">
-    <h1>Welcome to the IA page!</h1>
+  <div class="card">
+    <h1 class="card__title">Santé des vignes</h1>
+    <p class="card__subtitle">Malade ou pas malade ?</p>
+    <img v-if="isSick" :src="'data:image/jpeg;base64,'+ base64"/>
+    <div class="card__subtitle">
+      <p v-if="isSick">
+        Maladie potentielle repérée sur les vignes !
+      </p>
+      <p v-else>
+        Pas de maladie repérée sur les vignes !
+      </p>
+    </div>
   </div>
 </template>
 
@@ -11,8 +21,9 @@ export default {
   name: 'Ia',
   data () {
     return {
-      // leafImage: '',
-      lastImageIdProcess: ''
+      base64: '',
+      lastImageIdProcess: '',
+      isSick: false
     }
   },
   methods: {
@@ -20,23 +31,26 @@ export default {
       const baseURL = 'http://api-voltron.herokuapp.com/api/';
       axios.get(`${baseURL}/images_process/lasted`)
       .then(response => {
-        console.log(response.data.status);
-        // const base6 = response.data.image.base_64;
-        const healthStatus = response.data.status;
-
-        this.isItSick(healthStatus)
-        // var image = new Image();
-        // image.src = `data:image/png;base64,${response.data.image}`;
+        if (this.lastImageIdProcess !== response.data.image._id) {
+          console.log('faire quelque chose')
+          this.isItSick(response.data.status);
+          this.base64 = response.data.image.base_64;
+          this.lastImageIdProcess = response.data.image._id;
+        } else {
+          console.log('Pas de nouvelles images')
+        }
       })
       .catch(error => {
-        console.log(error.message)
+        console.log(error.message);
       })
     },
     isItSick (status) {
       if (status < 0.5) {
-        console.log('status < 0.5 pas malade')
+        console.log('status < 0.5 pas malade');
+        return this.isSick = false;
       } else {
-        console.log('status > 0.5 malade')
+        console.log('status > 0.5 malade');
+        return this.isSick = true;
       }
     }
   },
