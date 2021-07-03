@@ -14,49 +14,49 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap');
 
-* {
-  font-family: 'Poppins', sans-serif;
-  margin:0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  * {
+    font-family: 'Poppins', sans-serif;
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-#app {
-  max-width: 100%;
-}
+  #app {
+    max-width: 100%;
+  }
 
-body {
-  background-image: linear-gradient(62deg, #b0b2b3 0%, #35747c 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding:32px;
-}
+  body {
+    background-image: linear-gradient(62deg, #b0b2b3 0%, #35747c 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding:32px;
+  }
 
-img {
-  max-width: 100%;
-  border-radius: 8px;
-}
+  img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
 
-.card {
-  max-width: 100%;
-  width: 540px;
-  background:white;
-  border-radius: 16px;
-  padding:32px;
-}
+  .card {
+    max-width: 100%;
+    width: 540px;
+    background:white;
+    border-radius: 16px;
+    padding:32px;
+  }
 
-.card__title {
-  text-align:center;
-  font-weight: 800;
-}
+  .card__title {
+    text-align:center;
+    font-weight: 800;
+  }
 
-.card__subtitle {
-  text-align: center;
-  color:#666;
-  font-weight: 500;
-}
+  .card__subtitle {
+    text-align: center;
+    color:#666;
+    font-weight: 500;
+  }
 
   .button {
     background: #2196F3;
@@ -91,6 +91,9 @@ img {
   .button--disabled:hover {
     cursor:not-allowed;
     background:#cecece;
+  }
+  .colorRed {
+    color: #f32133;
   }
 
 </style>
