@@ -30,10 +30,12 @@ const store = createStore({
     status: '',
     user: user,
     userInfos: {
+      id: '',
       lastname:'',
       firstname: '',
       email: ''
     },
+    isConnected: false
   },
   mutations: {
     setStatus: function (state, status) {
@@ -43,6 +45,7 @@ const store = createStore({
     logUser: function (state, user) {
       instance.defaults.headers.common['Authorization'] = user.token;
       localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('isConnected', JSON.stringify(true));
       state.user = user;
     },
     userInfos: function (state, userInfos) {
@@ -54,6 +57,10 @@ const store = createStore({
         token: '',
       }
       localStorage.removeItem('user');
+      localStorage.removeItem('isConnected');
+    },
+    connected: function (state, connexion) {
+      state.isConnected = connexion;
     }
   },
   actions: {
@@ -67,7 +74,15 @@ const store = createStore({
         instance.post('/login', userBody)
         .then(function (response) {
           commit('setStatus', '');
-          commit('logUser', response.data);
+          const userInfosToStore = {
+            id: response.data._id,
+            lastname: response.data.lastname,
+            firstname: response.data.firstname,
+            email: response.data.login
+          }
+          commit('logUser', userInfosToStore);
+          commit('userInfos', userInfosToStore);
+          commit('connected', true);
           resolve(response);
         })
         .catch(function (error) {
